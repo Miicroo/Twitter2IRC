@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 import org.jibble.pircbot.IrcException;
@@ -23,6 +24,11 @@ public class TwitterBot extends PircBot implements TweetReceiverCallback {
 	public TwitterBot() {
 		stream = new BotTwitterStream();
 		props = Configuration.getProperties();
+		try {
+			setEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
